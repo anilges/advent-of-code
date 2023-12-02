@@ -1,0 +1,54 @@
+#!/usr/bin/python3
+
+import fileinput
+
+
+def part1():
+    res = 0
+    for line in fileinput.input():
+        list = []
+        for char in line.rstrip():
+            if char.isdigit():
+                list.append(char)
+        number = list[0] + list[-1]
+        res += int(number)
+    print(res)
+
+
+def part2():
+    sub = {'one': '1', 'two': '2', 'three': '3', 'four': '4',
+           'five': '5', 'six': '6', 'seven': '7', 'eight': '8', 'nine': '9'}
+    res = 0
+    for line in fileinput.input():
+        line = line.rstrip()
+        list = []
+        z = {}
+        for word, num in sub.items():
+            start = 0
+            if word in line:
+                while True:
+                    index = line.find(word, start)
+                    if index == -1:
+                        break
+                    z[index] = word
+                    start = index + 1
+        sort_z = dict(sorted(z.items()))
+        j = 0
+        for i, num in sort_z.items():
+            line = line[:i+j] + sub[num] + line[i+j:]
+            j += 1
+        for char in line:
+            if char.isdigit():
+                list.append(char)
+        number = list[0] + list[-1]
+        res += int(number)
+    print(res)
+
+
+def main():
+    part1()
+    part2()
+
+
+if __name__ == "__main__":
+    main()
