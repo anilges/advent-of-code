@@ -1,6 +1,6 @@
 def what_floor() -> int:
     floor: int = 0
-    with open("1.in", "r") as f:
+    with open("input.txt", "r") as f:
         for line in f:
             for char in line:
                 if char == "(":
@@ -15,7 +15,7 @@ def what_floor() -> int:
 def char_pos() -> int:
     floor: int = 0
     pos: int = -1
-    with open("1.in", "r") as f:
+    with open("input.txt", "r") as f:
         for line in f:
             for char in line:
                 pos += 1
