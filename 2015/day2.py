@@ -12,8 +12,21 @@ def wrap_paper() -> int:
     return total
 
 
+def ribbon() -> int:
+    total: int = 0
+    with open("input.txt", "r") as f:
+        for line in f:
+            dim_string = line.strip().split("x")
+            dim_int = [int(x) for x in dim_string]
+            dim_int.sort()
+            total += 2 * dim_int[0] + 2 * dim_int[1]
+            total += dim_int[0] * dim_int[1] * dim_int[2]
+    return total
+
+
 def main() -> None:
     print(wrap_paper())
+    print(ribbon())
 
 
 if __name__ == "__main__":
